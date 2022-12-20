@@ -1,6 +1,7 @@
 import 'package:firebase_login/pages/register.dart';
 import 'package:firebase_login/widgets/textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -83,17 +84,21 @@ class LoginPage extends StatelessWidget {
                 // sign in button
                 GestureDetector(
                   child: Container(
-                    padding: const EdgeInsets.all(25),
-                    margin: const EdgeInsets.symmetric(horizontal: 25),
+                    padding: const EdgeInsets.all(15),
+                    margin: const EdgeInsets.symmetric(horizontal: 130),
                     decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(8),
+                      border: const GradientBoxBorder(
+                          gradient: LinearGradient(
+                              colors: [Color(0xffFF35B8), Color(0xff09FACA)]),
+                          width: 3),
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text(
                         "Sign In",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.grey[500],
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),

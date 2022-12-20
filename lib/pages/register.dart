@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
 import '../widgets/textfield.dart';
 
@@ -17,7 +18,7 @@ class RegisterPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         child: SafeArea(
           child: Center(
             child: Column(
@@ -26,10 +27,10 @@ class RegisterPage extends StatelessWidget {
                 const SizedBox(height: 50),
 
                 // logo
-                const Icon(
-                  Icons.lock,
-                  size: 100,
-                ),
+                SizedBox(
+                    width: 110,
+                    height: 110,
+                    child: Image.asset("assets/unlock.png")),
 
                 const SizedBox(height: 50),
 
@@ -57,7 +58,7 @@ class RegisterPage extends StatelessWidget {
                 MyTextField(
                   controller: _emailController,
                   hintText: 'E-mail',
-                  obscureText: true,
+                  obscureText: false,
                 ),
 
                 const SizedBox(height: 10),
@@ -82,17 +83,21 @@ class RegisterPage extends StatelessWidget {
                     Navigator.pop(context, true);
                   },
                   child: Container(
-                    padding: const EdgeInsets.all(25),
-                    margin: const EdgeInsets.symmetric(horizontal: 25),
+                    padding: const EdgeInsets.all(15),
+                    margin: const EdgeInsets.symmetric(horizontal: 130),
                     decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(8),
+                      border: const GradientBoxBorder(
+                          gradient: LinearGradient(
+                              colors: [Color(0xffFF35B8), Color(0xff09FACA)]),
+                          width: 3),
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text(
                         "Register",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.grey[500],
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),

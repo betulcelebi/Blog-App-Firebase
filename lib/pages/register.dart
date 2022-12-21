@@ -48,7 +48,7 @@ class RegisterPage extends StatelessWidget {
                 // username textfield
                 MyTextField(
                   controller: _nameController,
-                  hintText: 'Name',
+                  hintText: 'Username',
                   obscureText: false,
                 ),
 
@@ -86,10 +86,7 @@ class RegisterPage extends StatelessWidget {
                     padding: const EdgeInsets.all(15),
                     margin: const EdgeInsets.symmetric(horizontal: 130),
                     decoration: BoxDecoration(
-                      border: const GradientBoxBorder(
-                          gradient: LinearGradient(
-                              colors: [Color(0xffFF35B8), Color(0xff09FACA)]),
-                          width: 3),
+                      border: Border.all(color: Colors.white),
                       color: Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(20),
                     ),

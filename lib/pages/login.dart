@@ -87,10 +87,7 @@ class LoginPage extends StatelessWidget {
                     padding: const EdgeInsets.all(15),
                     margin: const EdgeInsets.symmetric(horizontal: 130),
                     decoration: BoxDecoration(
-                      border: const GradientBoxBorder(
-                          gradient: LinearGradient(
-                              colors: [Color(0xffFF35B8), Color(0xff09FACA)]),
-                          width: 3),
+                      border: Border.all(color: Colors.white,strokeAlign: StrokeAlign.outside),
                       color: Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(20),
                     ),

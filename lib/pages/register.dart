@@ -1,5 +1,7 @@
+import 'package:firebase_login/bindings/login_binding.dart';
 import 'package:firebase_login/controller/register_controller.dart';
 import 'package:firebase_login/pages/login.dart';
+import 'package:firebase_login/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -7,7 +9,7 @@ import 'package:get/get.dart';
 import '../widgets/textfield.dart';
 
 class RegisterPage extends GetView<RegisterController> {
-  var registerCtrl = Get.find<RegisterController>();
+  // var registerCtrl = Get.find<RegisterController>();
   RegisterPage({super.key});
 
   @override
@@ -62,9 +64,9 @@ class RegisterPage extends GetView<RegisterController> {
                 InkWell(
                   onTap: () {
                     controller.authService
-                        .createUser(controller.email, controller.password)
-                        .then((value) => Get.to(() => LoginPage(),
-                            transition: Transition.rightToLeftWithFade));
+                        .createUser(controller.email, controller.password);
+
+                    Get.toNamed(Routes.LOGIN);
                   },
                   child: Container(
                     padding: const EdgeInsets.all(15),

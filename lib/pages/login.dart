@@ -1,19 +1,15 @@
+import 'package:firebase_login/bindings/register_binding.dart';
 import 'package:firebase_login/controller/login_controller.dart';
 import 'package:firebase_login/pages/register.dart';
+import 'package:firebase_login/routes/app_routes.dart';
 import 'package:firebase_login/widgets/textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
 class LoginPage extends GetView<LoginController> {
   LoginPage({super.key});
-
-  // text editing controllers
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  // sign user in method
-  void signUserIn() {}
 
   @override
   Widget build(BuildContext context) {
@@ -49,20 +45,19 @@ class LoginPage extends GetView<LoginController> {
 
                 const SizedBox(height: 25),
 
-                // username textfield
-                // MyTextField(
+                MyTextField(
+                  onChanged: (value) => controller.email = value,
+                  hintText: 'Email',
+                  obscureText: false,
+                ),
 
-                //   hintText: 'Username',
-                //   obscureText: false,
-                // ),
+                const SizedBox(height: 10),
 
-                // const SizedBox(height: 10),
-
-                // // password textfield
-                // MyTextField(
-                //   hintText: 'Password',
-                //   obscureText: true,
-                // ),
+                MyTextField(
+                  onChanged: (value) => controller.password = value,
+                  hintText: 'Password',
+                  obscureText: true,
+                ),
 
                 const SizedBox(height: 10),
 
@@ -84,6 +79,11 @@ class LoginPage extends GetView<LoginController> {
 
                 // sign in button
                 GestureDetector(
+                  onTap: () {
+                    controller.authService
+                        .signUser(controller.email, controller.password);
+                    
+                  },
                   child: Container(
                     padding: const EdgeInsets.all(15),
                     margin: const EdgeInsets.symmetric(horizontal: 130),
@@ -106,7 +106,7 @@ class LoginPage extends GetView<LoginController> {
                     ),
                   ),
                 ),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
 
                 // or continue with
                 Padding(
@@ -187,12 +187,7 @@ class LoginPage extends GetView<LoginController> {
                     const SizedBox(width: 4),
                     InkWell(
                       onTap: () {
-                        Navigator.push<void>(
-                          context,
-                          MaterialPageRoute<void>(
-                            builder: (BuildContext context) => RegisterPage(),
-                          ),
-                        );
+                        Get.to(RegisterPage(), binding: RegisterBinding());
                       },
                       child: const Text(
                         'Register now',

@@ -10,13 +10,11 @@ class AuthService extends GetxService {
 
   createUser(email, password) async {
     try {
-      final credential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-            email: email,
-            password: password,
-          )
-          .whenComplete(() => Get.defaultDialog(
-              title: "Kullanıcı Oluşturuldu", middleText: ""));
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: "betulcelebi_@gmail.com",
+        password: "123456",
+      );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -25,6 +23,21 @@ class AuthService extends GetxService {
       }
     } catch (e) {
       print(e);
+    }
+  }
+
+  signUser(email, password) async {
+    try {
+      final credential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+        return Get.defaultDialog(
+            title: "Kullanıcı mevcut değil, lütfen kayıt olunuz");
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
     }
   }
 }

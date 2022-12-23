@@ -5,8 +5,7 @@ import 'package:firebase_login/routes/app_routes.dart';
 import 'package:firebase_login/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+
 
 class LoginPage extends GetView<LoginController> {
   LoginPage({super.key});
@@ -82,7 +81,7 @@ class LoginPage extends GetView<LoginController> {
                   onTap: () {
                     controller.authService
                         .signUser(controller.email, controller.password);
-                    
+                    Get.toNamed(Routes.HOME);
                   },
                   child: Container(
                     padding: const EdgeInsets.all(15),

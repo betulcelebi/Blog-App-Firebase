@@ -1,17 +1,14 @@
+import 'package:firebase_login/controller/register_controller.dart';
+import 'package:firebase_login/pages/login.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+
+import 'package:get/get.dart';
 
 import '../widgets/textfield.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends GetView<RegisterController> {
+  var registerCtrl = Get.find<RegisterController>();
   RegisterPage({super.key});
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _passwordAgainController =
-      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,18 +42,8 @@ class RegisterPage extends StatelessWidget {
 
                 const SizedBox(height: 25),
 
-                // username textfield
                 MyTextField(
-                  controller: _nameController,
-                  hintText: 'Username',
-                  obscureText: false,
-                ),
-
-                const SizedBox(height: 10),
-
-                // password textfield
-                MyTextField(
-                  controller: _emailController,
+                  onChanged: (value) => controller.email = value,
                   hintText: 'E-mail',
                   obscureText: false,
                 ),
@@ -64,23 +51,20 @@ class RegisterPage extends StatelessWidget {
                 const SizedBox(height: 10),
                 // password textfield
                 MyTextField(
-                  controller: _passwordController,
+                  onChanged: (value) => controller.password = value,
                   hintText: 'Password',
-                  obscureText: true,
-                ),
-                const SizedBox(height: 10),
-                MyTextField(
-                  controller: _passwordAgainController,
-                  hintText: 'Password Again',
                   obscureText: true,
                 ),
 
                 const SizedBox(height: 25),
 
                 // sign in button
-                GestureDetector(
+                InkWell(
                   onTap: () {
-                    Navigator.pop(context, true);
+                    controller.authService
+                        .createUser(controller.email, controller.password)
+                        .then((value) => Get.to(() => LoginPage(),
+                            transition: Transition.rightToLeftWithFade));
                   },
                   child: Container(
                     padding: const EdgeInsets.all(15),

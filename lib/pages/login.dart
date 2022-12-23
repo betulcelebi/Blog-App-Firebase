@@ -1,9 +1,11 @@
+import 'package:firebase_login/controller/login_controller.dart';
 import 'package:firebase_login/pages/register.dart';
 import 'package:firebase_login/widgets/textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends GetView<LoginController> {
   LoginPage({super.key});
 
   // text editing controllers
@@ -48,20 +50,19 @@ class LoginPage extends StatelessWidget {
                 const SizedBox(height: 25),
 
                 // username textfield
-                MyTextField(
-                  controller: usernameController,
-                  hintText: 'Username',
-                  obscureText: false,
-                ),
+                // MyTextField(
 
-                const SizedBox(height: 10),
+                //   hintText: 'Username',
+                //   obscureText: false,
+                // ),
 
-                // password textfield
-                MyTextField(
-                  controller: passwordController,
-                  hintText: 'Password',
-                  obscureText: true,
-                ),
+                // const SizedBox(height: 10),
+
+                // // password textfield
+                // MyTextField(
+                //   hintText: 'Password',
+                //   obscureText: true,
+                // ),
 
                 const SizedBox(height: 10),
 
@@ -87,7 +88,9 @@ class LoginPage extends StatelessWidget {
                     padding: const EdgeInsets.all(15),
                     margin: const EdgeInsets.symmetric(horizontal: 130),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white,strokeAlign: StrokeAlign.outside),
+                      border: Border.all(
+                          color: Colors.white,
+                          strokeAlign: StrokeAlign.outside),
                       color: Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(20),
                     ),

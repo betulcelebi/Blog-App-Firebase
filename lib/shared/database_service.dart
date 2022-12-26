@@ -2,22 +2,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 class DatabaseService extends GetxService {
+ FirebaseFirestore db = FirebaseFirestore.instance;
   Future<DatabaseService> init() async {
     return this;
   }
 
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
-  addBlog() async {
+  // DocumentSnapshot<Map<String, dynamic>>? data;
+  Future<DocumentSnapshot<Map<String, dynamic>>?>? getBlog() async {
+    return await db.collection("blog").doc("TN7dSbHkGNdfE35QAIXo").get();
 
-    var data=firestore
-    .collection('blog')
-    .doc("TN7dSbHkGNdfE35QAIXo")
-    .get()
-    .then((DocumentSnapshot documentSnapshot) {
-      if (documentSnapshot.exists) {
-        print('Document exists on the database');
-      }
-    });
-    print(data);
+    //update();
   }
 }

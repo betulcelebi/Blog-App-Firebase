@@ -1,17 +1,22 @@
 import 'dart:ui';
 
+import 'package:firebase_login/controller/home_controller.dart';
+import 'package:firebase_login/shared/database_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    DatabaseService db=DatabaseService();
     return Scaffold(
       // extendBodyBehindAppBar: true,
       appBar: AppBar(
+       // title: Text(controller.deger),
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Color(0xffEFEFEF), // Status bar
         ),
@@ -96,10 +101,11 @@ class HomePage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            "Please Start Writing Better Git Commits",
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w600),
+                          Obx(() =>   Text(
+                              controller.databaslik.value.toString(),
+                              style: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w600),
+                            ),
                           ),
                           const SizedBox(
                             height: 15,

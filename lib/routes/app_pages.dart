@@ -21,6 +21,9 @@ class AppPages {
         name: Routes.REGISTER,
         page: () => RegisterPage(),
         binding: RegisterBinding()),
-    GetPage(name: Routes.HOME, page: () => HomePage(), binding: HomeBinding()),
+    GetPage(
+        name: Routes.HOME,
+        page: () => const HomePage(),
+        binding: HomeBinding()),
   ];
 }

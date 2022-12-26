@@ -76,92 +76,106 @@ class HomePage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 50),
-            Container(
-              width: 350,
-              height: 264,
-              decoration: BoxDecoration(
-                  color: const Color(0xffF8F8F8),
-                  borderRadius: BorderRadius.circular(9)),
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Please Start Writing Better Git Commits",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    SizedBox(
-                      height: 22,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+            SizedBox(
+              height: 600,
+              child: ListView.builder(
+                itemCount: 2,
+                shrinkWrap: true,
+                
+                
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: EdgeInsets.only(bottom: 8,right: 10),
+                    width: 350,
+                    height: 264,
+                    decoration: BoxDecoration(
+                        color: const Color(0xffF8F8F8),
+                        borderRadius: BorderRadius.circular(9)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const CircleAvatar(
-                            backgroundImage: AssetImage("assets/pr.png"),
-                            radius: 10,
-                          ),
-                          const SizedBox(width: 7),
                           const Text(
-                            "Travis Aaron Wagner",
+                            "Please Start Writing Better Git Commits",
                             style: TextStyle(
-                                color: Color(0xff000000), fontSize: 12),
+                                fontSize: 16, fontWeight: FontWeight.w600),
                           ),
-                          const SizedBox(width: 14),
-                          Image.asset("assets/ellipse.png"),
-                          const SizedBox(width: 16),
-                          const Text(
-                            "Jul 29, 2022",
-                            style: TextStyle(
-                                fontStyle: FontStyle.italic,
-                                fontSize: 12,
-                                color: Color(0xffC8C8C8)),
+                          const SizedBox(
+                            height: 15,
                           ),
-                          const SizedBox(width: 16),
-                          Image.asset("assets/ellipse.png"),
-                          const SizedBox(width: 16),
-                          const Text("4 min. read",
-                              style: TextStyle(
-                                  fontStyle: FontStyle.italic,
-                                  fontSize: 12,
-                                  color: Color(0xffC8C8C8))),
+                          SizedBox(
+                            height: 22,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                const CircleAvatar(
+                                  backgroundImage: AssetImage("assets/pr.png"),
+                                  radius: 10,
+                                ),
+                                const SizedBox(width: 7),
+                                const Text(
+                                  "Travis Aaron Wagner",
+                                  style: TextStyle(
+                                      color: Color(0xff000000), fontSize: 12),
+                                ),
+                                const SizedBox(width: 14),
+                                Image.asset("assets/ellipse.png"),
+                                const SizedBox(width: 16),
+                                const Text(
+                                  "Jul 29, 2022",
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 12,
+                                      color: Color(0xffC8C8C8)),
+                                ),
+                                const SizedBox(width: 16),
+                                Image.asset("assets/ellipse.png"),
+                                const SizedBox(width: 16),
+                                const Text("4 min. read",
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.italic,
+                                        fontSize: 12,
+                                        color: Color(0xffC8C8C8))),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 7),
+                          Container(
+                            width: 350,
+                            height: 1,
+                            color: Color(0xffC8C8C8),
+                          ),
+                          SizedBox(height: 14),
+                          Container(
+                            //color: Colors.red,
+                            width: 341,
+                            height: 90,
+                            child: Text.rich(TextSpan(
+                                style: GoogleFonts.montserrat(fontSize: 12),
+                                text:
+                                    "I recently read a helpful article on Hashnode by Simon Egersand titled Write Git Commit Messages Your Colleagues Will Love, and it inspired me to dive a little deeper into understanding what makes a Git commit good or bad.")),
+                          ),
+                          SizedBox(height: 30),
+                          Container(
+                              alignment: Alignment.center,
+                              width: 344,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.circular(6)),
+                              child: Text("Read more",
+                                  style: GoogleFonts.montserrat(
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500)))
                         ],
                       ),
                     ),
-                    SizedBox(height: 7),
-                    Container(
-                      width: 350,
-                      height: 1,
-                      color: Color(0xffC8C8C8),
-                    ),
-                    SizedBox(height: 14),
-                    Container(
-                      //color: Colors.red,
-                      width: 341,
-                      height: 90,
-                      child: Text.rich(
-                      
-                          TextSpan(
-                              style: GoogleFonts.montserrat(fontSize: 12),
-                              text:
-                                  "I recently read a helpful article on Hashnode by Simon Egersand titled Write Git Commit Messages Your Colleagues Will Love, and it inspired me to dive a little deeper into understanding what makes a Git commit good or bad.")),
-                    ),
-                    SizedBox(height:30),
-                    Container(
-                      alignment: Alignment.center,
-                      
-                      width: 344,
-                    height: 40,
-                    decoration: BoxDecoration(color: Colors.black,
-                    borderRadius: BorderRadius.circular(6)),
-                    child: Text("Read more", style: GoogleFonts.montserrat(color: Colors.white, fontSize: 14,fontWeight: FontWeight.w500)))
-                  ],
-                ),
+                  );
+                },
               ),
-            ),
+            )
           ],
         ),
       ),

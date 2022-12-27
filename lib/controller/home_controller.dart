@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_login/shared/database_service.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
@@ -37,5 +38,20 @@ class HomeController extends GetxController {
     // data = await db.collection("yazilar").doc("yazi1").get();
     update();
     // update();
+  }
+
+  displayDeleteDialog(String docId) {
+    Get.defaultDialog(
+      title: "Delete Employee",
+      titleStyle: const TextStyle(fontSize: 20),
+      middleText: 'Are you sure to delete employee ?',
+      textCancel: "Cancel",
+      textConfirm: "Confirm",
+      confirmTextColor: Colors.black,
+      onCancel: () {},
+      onConfirm: () {
+        db.deleteData(docId);
+      },
+    );
   }
 }

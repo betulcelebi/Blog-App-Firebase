@@ -28,14 +28,12 @@ class BlogPage extends GetView<BlogController> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextFormField(
-              onChanged: (value) {
-                controller.Title.toString();
-              },
+              onChanged: (value) => controller.Title = value,
               obscureText: false,
               decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: const BorderSide(color: Colors.white),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -46,21 +44,21 @@ class BlogPage extends GetView<BlogController> {
                   hintText: "",
                   hintStyle: TextStyle(color: Colors.grey[500])),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
                 height: MediaQuery.of(context).size.height *
                     0.3, //set the size according to your choice
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   //Customize your container
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
                 ),
                 child: TextFormField(
-                  onChanged: (value) {},
+                  onChanged: (value) => controller.content = value,
                   decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: Colors.white),
+                        borderSide: const BorderSide(color: Colors.white),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -72,7 +70,7 @@ class BlogPage extends GetView<BlogController> {
                       hintStyle: TextStyle(color: Colors.grey[500])),
                   maxLines: 25,
                 )),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             InkWell(
               onTap: () {
                 controller.auth.addBlog(controller.Title, controller.content);
@@ -85,7 +83,7 @@ class BlogPage extends GetView<BlogController> {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Text(
+                child: const Text(
                   "Add Blog Post",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),

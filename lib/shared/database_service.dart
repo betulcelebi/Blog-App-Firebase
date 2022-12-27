@@ -2,15 +2,21 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 class DatabaseService extends GetxService {
- FirebaseFirestore db = FirebaseFirestore.instance;
+  FirebaseFirestore db = FirebaseFirestore.instance;
+  CollectionReference blog = FirebaseFirestore.instance.collection('blog');
   Future<DatabaseService> init() async {
     return this;
   }
 
-  // DocumentSnapshot<Map<String, dynamic>>? data;
   Future<DocumentSnapshot<Map<String, dynamic>>?>? getBlog() async {
-    return await db.collection("blog").doc("TN7dSbHkGNdfE35QAIXo").get();
+    return await db.collection("blog").doc().get();
+  }
 
-    //update();
+  
+  Future<void> addBlog(Title, content) async{
+    return blog
+        .add({'title': Title, 'content': content})
+        .then((value) => print("Blog Added"))
+        .catchError((error) => print("Failed to add user: $error"));
   }
 }

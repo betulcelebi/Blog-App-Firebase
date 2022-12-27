@@ -6,7 +6,6 @@ import 'package:firebase_login/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class LoginPage extends GetView<LoginController> {
   LoginPage({super.key});
 

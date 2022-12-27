@@ -1,6 +1,8 @@
+import 'package:firebase_login/bindings/blog_binding.dart';
 import 'package:firebase_login/bindings/home_binding.dart';
 import 'package:firebase_login/bindings/login_binding.dart';
 import 'package:firebase_login/bindings/register_binding.dart';
+import 'package:firebase_login/pages/blog.dart';
 import 'package:firebase_login/pages/home.dart';
 import 'package:firebase_login/pages/login.dart';
 import 'package:firebase_login/pages/register.dart';
@@ -25,5 +27,9 @@ class AppPages {
         name: Routes.HOME,
         page: () => const HomePage(),
         binding: HomeBinding()),
+    GetPage(
+        name: Routes.BLOG,
+        page: () => const BlogPage(),
+        binding: BlogBinding()),
   ];
 }

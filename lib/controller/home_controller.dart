@@ -7,7 +7,9 @@ class HomeController extends GetxController {
   DatabaseService db = DatabaseService();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   RxString databaslik = "".obs;
-  String? dataicerik;
+  RxString datayazar = "".obs;
+  RxString dataicerik = "".obs;
+
   RxList<dynamic> liste = [].obs;
 
   @override
@@ -24,6 +26,8 @@ class HomeController extends GetxController {
     print(data["Title"]);
 
     databaslik.value = data["Title"];
+    datayazar.value = data["Author"];
+    dataicerik.value = data["content"];
     firestore.collection("blog").snapshots().listen((event) {
       for (var element in event.docs) {
         liste.add(element);

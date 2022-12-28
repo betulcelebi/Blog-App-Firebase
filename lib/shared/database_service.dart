@@ -16,30 +16,10 @@ class DatabaseService extends GetxService {
     return await db.collection("blog").doc("BCAqFBXSkFdrUz0iYUHp").get();
   }
 
-  Future<void> addBlog(Title, content) async {
+  Future<void> addBlog(title, author, content) async {
     return await blog
-        .add({'title': Title, 'content': content})
+        .add({'title': title, 'author': author, 'content': content})
         .then((value) => print("Blog Added"))
         .catchError((error) => print("Failed to add user: $error"));
-  }
-
-  Future<void> deleteData(String docId) async {
-    CustomFullScreenDialog.showDialog();
-    blog.doc(docId).delete().whenComplete(() {
-      CustomFullScreenDialog.cancelDialog();
-      Get.back();
-      CustomSnackBar.showSnackBar(
-          context: Get.context,
-          title: "Blog Post Deleted",
-          message: "Blog post deleted successfully",
-          backgroundColor: Colors.green);
-    }).catchError((error) {
-      CustomFullScreenDialog.cancelDialog();
-      CustomSnackBar.showSnackBar(
-          context: Get.context,
-          title: "Error",
-          message: "Something went wrong",
-          backgroundColor: Colors.red);
-    });
   }
 }

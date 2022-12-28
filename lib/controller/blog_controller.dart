@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 class BlogController extends GetxController {
   FirebaseFirestore db = FirebaseFirestore.instance;
   DatabaseService auth = DatabaseService();
-  String Title = "";
+  String title = "";
+  String author = "";
   String content = "";
 }

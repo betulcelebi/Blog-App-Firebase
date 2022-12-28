@@ -28,7 +28,25 @@ class BlogPage extends GetView<BlogController> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextFormField(
-              onChanged: (value) => controller.Title = value,
+              onChanged: (value) => controller.title = value,
+              obscureText: false,
+              decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: const BorderSide(color: Colors.white),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.grey.shade400),
+                  ),
+                  fillColor: Colors.white,
+                  filled: true,
+                  hintText: "",
+                  hintStyle: TextStyle(color: Colors.grey[500])),
+            ),
+            const SizedBox(height: 10),
+            TextFormField(
+              onChanged: (value) => controller.author = value,
               obscureText: false,
               decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
@@ -73,7 +91,8 @@ class BlogPage extends GetView<BlogController> {
             const SizedBox(height: 20),
             InkWell(
               onTap: () {
-                controller.auth.addBlog(controller.Title, controller.content);
+                controller.auth.addBlog(
+                    controller.title, controller.author, controller.content);
               },
               child: Container(
                 alignment: Alignment.center,

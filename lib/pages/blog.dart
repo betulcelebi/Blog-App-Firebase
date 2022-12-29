@@ -1,10 +1,6 @@
-import 'dart:ui';
-
 import 'package:firebase_login/controller/blog_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
 class BlogPage extends GetView<BlogController> {
@@ -41,7 +37,7 @@ class BlogPage extends GetView<BlogController> {
                   ),
                   fillColor: Colors.white,
                   filled: true,
-                  hintText: "",
+                  hintText: "Title",
                   hintStyle: TextStyle(color: Colors.grey[500])),
             ),
             const SizedBox(height: 10),
@@ -59,7 +55,7 @@ class BlogPage extends GetView<BlogController> {
                   ),
                   fillColor: Colors.white,
                   filled: true,
-                  hintText: "",
+                  hintText: "Author",
                   hintStyle: TextStyle(color: Colors.grey[500])),
             ),
             const SizedBox(height: 10),
@@ -84,7 +80,7 @@ class BlogPage extends GetView<BlogController> {
                       ),
                       fillColor: Colors.white,
                       filled: true,
-                      hintText: "",
+                      hintText: "Content",
                       hintStyle: TextStyle(color: Colors.grey[500])),
                   maxLines: 25,
                 )),
@@ -93,6 +89,7 @@ class BlogPage extends GetView<BlogController> {
               onTap: () {
                 controller.auth.addBlog(
                     controller.title, controller.author, controller.content);
+                controller.homecontroller.getData();
               },
               child: Container(
                 alignment: Alignment.center,

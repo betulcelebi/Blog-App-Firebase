@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:firebase_login/controller/home_controller.dart';
-import 'package:firebase_login/pages/blog.dart';
 import 'package:firebase_login/routes/app_routes.dart';
 import 'package:firebase_login/shared/database_service.dart';
 import 'package:flutter/material.dart';
@@ -176,13 +173,22 @@ class HomePage extends GetView<HomeController> {
                                   child: InkWell(
                                     onTap: () {
                                       controller.deleteItem(controller.liste[index].id);
+                                      controller.liste.refresh();
+                                      controller.onInit();
                                       // controller.analyticsService.logEvent();
                                       },
-                                    child: Text("Read more",
-                                        style: GoogleFonts.montserrat(
-                                            color: Colors.white,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500)),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text("Delete",
+                                            style: GoogleFonts.montserrat(
+                                                color: Colors.white,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500)),
+                                                SizedBox(width: 5),
+                                                Icon(Icons.delete, color: Colors.white)
+                                      ],
+                                    ),
                                   ))
                             ],
                           ),

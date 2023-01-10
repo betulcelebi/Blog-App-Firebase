@@ -1,3 +1,4 @@
+import 'package:firebase_login/app_binding.dart';
 import 'package:firebase_login/di.dart';
 import 'package:firebase_login/routes/app_pages.dart';
 import 'package:firebase_login/routes/app_routes.dart';
@@ -22,7 +23,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: Routes.LOGIN,
+      initialBinding: AppBinding(),
       getPages: AppPages.routes,
+      
     );
   }
 }
